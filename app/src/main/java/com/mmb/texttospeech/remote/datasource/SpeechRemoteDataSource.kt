@@ -6,7 +6,7 @@ import java.io.InputStream
 import javax.inject.Inject
 
 class SpeechRemoteDataSource @Inject constructor(private val textToSpeechApi: TextToSpeechApi){
-    fun TextToSpeech(language : String? , text: String):Single<InputStream>{
+    fun TextToSpeech(language : String? , text: String?):Single<InputStream>{
         return textToSpeechApi.convertTextToSpeech(KEY, language , text).map {
             it.byteStream()
         }
