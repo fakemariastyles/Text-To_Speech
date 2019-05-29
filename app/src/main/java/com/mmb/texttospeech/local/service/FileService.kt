@@ -23,10 +23,8 @@ class FileService : Service() {
             var output: OutputStream = FileOutputStream(file)
             try {
                 val buffer = ByteArray(4 * 1024)
-                var read: Int = 0
-                read = inputStream.read(buffer)
+                var read = inputStream.read(buffer)
                 while (read != -1) {
-                    read = inputStream.read(buffer)
                     output.write(buffer, 0, read)
                 }
                 output.flush()
@@ -34,7 +32,6 @@ class FileService : Service() {
                 output.close()
             }
         } finally {
-
             inputStream.close()
         }
 
@@ -49,6 +46,6 @@ class FileService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         Log.v("SS", "onDestroy")
-        this.stopSelf()
+//        this.stopSelf()
     }
 }
