@@ -11,8 +11,8 @@ import java.io.OutputStream
 
 class FileService : Service() {
     private val file = File(filesDir, "speech.mp3")
-
     override fun onBind(intent: Intent?): IBinder? {
+        println(filesDir)
         Log.v("SS", "onBind")
         return FileServiceBinder()
     }
@@ -42,5 +42,11 @@ class FileService : Service() {
     override fun onCreate() {
         super.onCreate()
         Log.v("SS" , "onCreate")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v("SS" , "onDestroy")
+        this.stopSelf()
     }
 }
