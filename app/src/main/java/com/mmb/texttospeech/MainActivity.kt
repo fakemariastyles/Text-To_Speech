@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.mmb.texttospeech.app.TextToSpeechApp
 import com.mmb.texttospeech.data.repository.SpeechRepository
@@ -17,10 +18,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         TextToSpeechApp.component.inject(this)
         speechRepository.textToSpeech("en-us" , "Hello")
-    }
-
-    override fun onCreateView(name: String?, context: Context?, attrs: AttributeSet?): View? {
-        return super.onCreateView(name, context, attrs)
-
     }
 }

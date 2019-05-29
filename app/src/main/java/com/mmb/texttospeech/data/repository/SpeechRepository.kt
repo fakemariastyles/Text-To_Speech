@@ -16,6 +16,7 @@ class SpeechRepository @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .subscribe({
+                println(it)
                 saveSpeech(it)
             },{
                 println(it)

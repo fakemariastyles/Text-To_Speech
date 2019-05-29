@@ -10,7 +10,7 @@ import java.io.InputStream
 import java.io.OutputStream
 
 class FileService : Service() {
-    private val file = File(filesDir, "speech.mp3")
+    private lateinit var file: File
     override fun onBind(intent: Intent?): IBinder? {
         println(filesDir)
         Log.v("SS", "onBind")
@@ -19,6 +19,7 @@ class FileService : Service() {
 
     fun saveFile(inputStream: InputStream) {
         try {
+            Log.v("SS" , "onSaveFile")
             var output: OutputStream = FileOutputStream(file)
             try {
                 val buffer = ByteArray(4 * 1024)
@@ -41,12 +42,13 @@ class FileService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.v("SS" , "onCreate")
+        Log.v("SS", "onCreate")
+        file = File(filesDir, "speech.mp3")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.v("SS" , "onDestroy")
+        Log.v("SS", "onDestroy")
         this.stopSelf()
     }
 }

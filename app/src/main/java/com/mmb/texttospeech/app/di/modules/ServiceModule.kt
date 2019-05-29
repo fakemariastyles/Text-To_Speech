@@ -14,7 +14,7 @@ class ServiceModule {
     @Singleton
     fun provideFileService(context : Context): FileService{
         val service = FileService()
-        service.startService( Intent(context, FileService::class.java))
+        context.startService( Intent(context, FileService::class.java))
         return service
     }
 }

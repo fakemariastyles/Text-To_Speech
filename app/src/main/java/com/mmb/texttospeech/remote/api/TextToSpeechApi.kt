@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface TextToSpeechApi {
-    @GET("?")
+    @GET("/?")
     fun convertTextToSpeech(
         @Query("key") key: String?
         , @Query("hl") language: String?
@@ -14,6 +14,6 @@ interface TextToSpeechApi {
     ):Single<ResponseBody>
 
     companion object {
-        const val BASE_URL = "http://api.voicerss.org/"
+        const val BASE_URL = "http://api.voicerss.org"
     }
 }
