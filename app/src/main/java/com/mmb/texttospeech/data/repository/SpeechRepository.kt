@@ -21,7 +21,7 @@ class SpeechRepository @Inject constructor(
     @SuppressLint("CheckResult")
     fun textToSpeech(language: String?, text: String?) {
         Log.v("SS", "requesting")
-        speechRemoteDataSource.TextToSpeech(language, text)
+        speechRemoteDataSource.textToSpeech(language, text)
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .subscribe({
@@ -49,4 +49,6 @@ class SpeechRepository @Inject constructor(
         Log.v("SS" , "onFileSaved")
         AudioPlayer(context = context, file = context.openFileInput("speech.mp3")).play()
     }
+
+    fun isConnectedToInternet() = speechRemoteDataSource.isConnectedToInternet(context)
 }
