@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             editText.text.toString().let {
                 println(it)
                 speechRepository.textToSpeech("en-us", text = it)
-                speechRepository.play(this)
             }
         }
 

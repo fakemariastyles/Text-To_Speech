@@ -8,7 +8,7 @@ import java.io.OutputStream
 import javax.inject.Inject
 
 class SpeechLocalDataSource @Inject constructor(private val context: Context) {
-    fun saveFile(inputStream: InputStream) {
+    fun saveFile( success : () -> Unit ,inputStream: InputStream) {
         val file: File = File(context.filesDir, "speech.mp3")
         if (file.exists()) {
             file.delete()
@@ -26,5 +26,6 @@ class SpeechLocalDataSource @Inject constructor(private val context: Context) {
             }
             output.close()
         }
+        success()
     }
 }

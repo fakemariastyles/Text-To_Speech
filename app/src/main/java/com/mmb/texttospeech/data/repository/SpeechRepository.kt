@@ -13,6 +13,7 @@ import java.io.InputStream
 import javax.inject.Inject
 
 class SpeechRepository @Inject constructor(
+    private val context: Context,
     private val speechLocalDataSource: SpeechLocalDataSource
     , private val speechRemoteDataSource: SpeechRemoteDataSource
 ) {
@@ -36,18 +37,16 @@ class SpeechRepository @Inject constructor(
         Log.v("SS", "onSaveSpeechRepo")
         inputStream.subscribeOn(Schedulers.io())
             .doOnSuccess {
-                speechLocalDataSource.saveFile(it)
+                speechLocalDataSource.saveFile(::onFileSaved,it)
             }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
             }, {
             })
-
-
     }
 
-
-    fun play(context: Context) {
+    private fun onFileSaved(){
+        Log.v("SS" , "onFileSaved")
         AudioPlayer(context = context, file = context.openFileInput("speech.mp3")).play()
     }
 }
