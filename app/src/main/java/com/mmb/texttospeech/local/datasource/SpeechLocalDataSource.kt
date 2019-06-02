@@ -10,13 +10,17 @@ import javax.inject.Inject
 class SpeechLocalDataSource @Inject constructor(private val context: Context) {
     fun saveFile(inputStream: InputStream) {
         val file: File = File(context.filesDir, "speech.mp3")
+        if (file.exists()) {
+            file.delete()
+        }
         inputStream.use { inputStream ->
-            val output: FileOutputStream = FileOutputStream(file)
+            val output = FileOutputStream(file)
             output.use { output ->
                 val buffer = ByteArray(4 * 1024)
-                val read = inputStream.read(buffer)
+                var read = inputStream.read(buffer)
                 while (read != -1) {
                     output.write(buffer, 0, read)
+                    read = inputStream.read(buffer)
                 }
                 output.flush()
             }

@@ -1,13 +1,17 @@
 package com.mmb.texttospeech.data.repository
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.provider.MediaStore
 import android.util.Log
 import com.mmb.texttospeech.local.datasource.SpeechLocalDataSource
+import com.mmb.texttospeech.mediaplayer.AudioPlayer
 import com.mmb.texttospeech.remote.datasource.SpeechRemoteDataSource
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.io.InputStream
+import java.io.*
+import java.util.*
 import javax.inject.Inject
 
 class SpeechRepository @Inject constructor(
@@ -43,7 +47,7 @@ class SpeechRepository @Inject constructor(
     }
 
 
-    fun play(){
-
+    fun play(context: Context){
+        AudioPlayer(context = context ,file =  context.openFileInput("speech.mp3")).play()
     }
 }

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         TextToSpeechApp.component.inject(this)
         speechRepository.textToSpeech("en-us", "Hello")
         findViewById<Button>(R.id.play).setOnClickListener {
-            speechRepository.play()
+            speechRepository.play(this)
         }
     }
 }
