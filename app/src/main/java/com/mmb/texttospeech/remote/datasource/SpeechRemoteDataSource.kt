@@ -9,16 +9,16 @@ import java.io.InputStream
 import javax.inject.Inject
 
 class SpeechRemoteDataSource @Inject constructor(private val textToSpeechApi: TextToSpeechApi) {
-    fun textToSpeech(language: String?, text: String?): Single<InputStream> {
-        return textToSpeechApi.convertTextToSpeech(KEY, language, text).map {
+    fun textToSpeech(language: String?, text: String?, speed: Int?): Single<InputStream> {
+        return textToSpeechApi.convertTextToSpeech(KEY, language, text, speed).map {
             println(it)
             it.byteStream()
         }
     }
 
-    fun isConnectedToInternet(context: Context):Boolean{
+    fun isConnectedToInternet(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork : NetworkInfo? = cm.activeNetworkInfo
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
         return activeNetwork?.isConnected == true
 
     }

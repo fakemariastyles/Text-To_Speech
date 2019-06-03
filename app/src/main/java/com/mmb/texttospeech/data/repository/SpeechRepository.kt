@@ -19,9 +19,9 @@ class SpeechRepository @Inject constructor(
 ) {
 
     @SuppressLint("CheckResult")
-    fun textToSpeech(language: String?, text: String?) {
+    fun textToSpeech(language: String?, text: String?, speed: Int?) {
         Log.v("SS", "requesting")
-        speechRemoteDataSource.textToSpeech(language, text)
+        speechRemoteDataSource.textToSpeech(language, text, speed)
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .subscribe({
@@ -37,7 +37,7 @@ class SpeechRepository @Inject constructor(
         Log.v("SS", "onSaveSpeechRepo")
         inputStream.subscribeOn(Schedulers.io())
             .doOnSuccess {
-                speechLocalDataSource.saveFile(::onFileSaved,it)
+                speechLocalDataSource.saveFile(::onFileSaved, it)
             }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -45,8 +45,8 @@ class SpeechRepository @Inject constructor(
             })
     }
 
-    private fun onFileSaved(){
-        Log.v("SS" , "onFileSaved")
+    private fun onFileSaved() {
+        Log.v("SS", "onFileSaved")
         AudioPlayer(context = context, file = context.openFileInput("speech.mp3")).play()
     }
 

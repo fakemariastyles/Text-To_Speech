@@ -21,7 +21,6 @@
             android:layout_width="match_parent" android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/spinner"
             app:layout_constraintTop_toBottomOf="@+id/info"
-
             app:layout_constraintVertical_chainStyle="packed"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -38,6 +37,32 @@
             app:layout_constraintTop_toBottomOf="@id/text"
             app:layout_constraintBottom_toTopOf="@id/play">
     </Spinner>
+    <TextView
+            android:layout_width="wrap_content"
+            android:text="5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/up"
+            android:id="@+id/speed"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_height="wrap_content"/>
+
+    <ImageView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_up"
+            app:layout_constraintStart_toEndOf="@id/speed"
+            app:layout_constraintEnd_toStartOf="@id/down"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            android:id="@+id/up"/>
+    <ImageView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_down"
+            app:layout_constraintStart_toEndOf="@id/up"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:layout_constraintEnd_toStartOf="@id/play"
+            android:id="@+id/down"/>
+
     <Button
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:textStyle="bold"

@@ -11,7 +11,8 @@ interface TextToSpeechApi {
         @Query("key") key: String?
         , @Query("hl") language: String?
         , @Query("src") text: String?
-    ):Single<ResponseBody>
+        , @Query("r") speed: Int?
+    ): Single<ResponseBody>
 
     companion object {
         const val BASE_URL = "http://api.voicerss.org"
