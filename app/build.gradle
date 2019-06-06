@@ -15,6 +15,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -72,4 +77,14 @@ dependencies {
 
     //mockK
     testImplementation "io.mockk:mockk:1.9"
+    testImplementation "org.mockito:mockito-inline:2.8.47"
+    testImplementation 'junit:junit:4.12'
+    testImplementation "androidx.test:core:1.1.0"
+    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:2.8.47"
+
+
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }

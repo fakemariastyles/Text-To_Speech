@@ -5,6 +5,7 @@
     <string-array name="languages">
         <item>en-au</item>
         <item>en-ca</item>
+        <item>de-de</item>
         <item>en-gb</item>
         <item>en-us</item>
         <item>fr-frr</item>

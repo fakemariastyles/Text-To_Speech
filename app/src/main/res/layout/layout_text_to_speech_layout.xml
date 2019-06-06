@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:background="@drawable/background"
         android:layout_height="match_parent">
 
@@ -25,6 +25,22 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:id="@id/text"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              app:layout_constraintEnd_toStartOf="@id/play"
+              app:layout_constraintTop_toBottomOf="@id/speed"
+              android:layout_marginRight="10dp"
+              android:text="Adjust speed"
+              app:layout_constraintStart_toEndOf="@id/gl"
+
+    />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:id="@+id/gl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintGuide_percent="0.07"
+    />
     <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,11 +56,10 @@
     <TextView
             android:layout_width="wrap_content"
             android:text="5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl"
             app:layout_constraintEnd_toStartOf="@id/up"
             android:id="@+id/speed"
             app:layout_constraintTop_toBottomOf="@id/spinner"
-            android:layout_marginLeft="30dp"
             app:layout_constraintVertical_chainStyle="packed"
             android:layout_height="wrap_content"/>
 
